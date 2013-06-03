@@ -733,15 +733,15 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
 		}
 
 		if (doScroll) {
+			// Call Refresh Listener when the Scroll has finished
+			OnSmoothScrollFinishedListener listener = new OnSmoothScrollFinishedListener() {
+				@Override
+				public void onSmoothScrollFinished() {
+					callRefreshListener();
+				}
+			};
+			
 			if (mShowViewWhileRefreshing) {
-
-				// Call Refresh Listener when the Scroll has finished
-				OnSmoothScrollFinishedListener listener = new OnSmoothScrollFinishedListener() {
-					@Override
-					public void onSmoothScrollFinished() {
-						callRefreshListener();
-					}
-				};
 
 				switch (mCurrentMode) {
 					case MANUAL_REFRESH_ONLY:
@@ -754,7 +754,7 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
 						break;
 				}
 			} else {
-				smoothScrollTo(0);
+				smoothScrollTo(0, listener);
 			}
 		} else {
 			// We're not scrolling, so just call Refresh Listener now
