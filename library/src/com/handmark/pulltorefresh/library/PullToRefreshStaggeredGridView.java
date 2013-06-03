@@ -371,12 +371,28 @@ public class PullToRefreshStaggeredGridView extends PullToRefreshBase<StaggeredG
 	protected boolean isReadyForPullEnd() {
 		return isLastItemVisible();
 	}
+	
+	public interface OnScrollChangedListener{
+		public abstract void onScrollChanged(int l, int t, int oldl, int oldt);
+	}
+	
+	private OnScrollChangedListener mOnScrollChangedListener;
+	
+	
+	public void setOnScrollChangedListener(
+			OnScrollChangedListener mOnScrollChangedListener) {
+		this.mOnScrollChangedListener = mOnScrollChangedListener;
+	}
 
 	@Override
 	protected void onScrollChanged(int l, int t, int oldl, int oldt) {
 		super.onScrollChanged(l, t, oldl, oldt);
 		if (null != mEmptyView && !mScrollEmptyView) {
 			mEmptyView.scrollTo(-l, -t);
+		}
+		if(mOnScrollChangedListener != null)
+		{
+			mOnScrollChangedListener.onScrollChanged(l, t, oldl, oldt);
 		}
 	}
 
