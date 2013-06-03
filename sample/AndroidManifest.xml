@@ -38,6 +38,10 @@
             android:label="PtR GridView" >
         </activity>
         <activity
+            android:name=".PullToRefreshStaggeredGridActivity"
+            android:label="PtR StaggeredGridView" >
+        </activity>
+        <activity
             android:name=".PullToRefreshExpandableListActivity"
             android:label="PtR ExpandableListView" >
         </activity>
