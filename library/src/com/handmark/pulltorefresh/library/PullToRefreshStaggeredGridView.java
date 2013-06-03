@@ -26,7 +26,6 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
-import android.widget.AbsListView;
 import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -45,7 +44,7 @@ public class PullToRefreshStaggeredGridView extends PullToRefreshBase<StaggeredG
 		super(context);
 		mRefreshableView.setOnScrollListener(this);
 	}
-
+	
 	public PullToRefreshStaggeredGridView(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		mRefreshableView.setOnScrollListener(this);
@@ -60,6 +59,7 @@ public class PullToRefreshStaggeredGridView extends PullToRefreshBase<StaggeredG
 		super(context, mode, style);
 		mRefreshableView.setOnScrollListener(this);
 	}
+	
 
 	@Override
 	public final Orientation getPullToRefreshScrollDirection() {
@@ -211,6 +211,7 @@ public class PullToRefreshStaggeredGridView extends PullToRefreshBase<StaggeredG
 	public void setAdapter(ListAdapter adapter) {
 		mRefreshableView.setAdapter(adapter);
 	}
+	
 
 	/**
 	 * Sets the Empty View to be used by the Adapter View.
