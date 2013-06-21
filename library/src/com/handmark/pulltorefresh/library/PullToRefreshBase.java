@@ -938,6 +938,9 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
 				break;
 		}
 	}
+	
+	
+	protected void onPulled(final int value) {}
 
 	/**
 	 * Helper method which just calls scrollTo() in the correct scrolling
@@ -949,6 +952,8 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
 		if (DEBUG) {
 			Log.d(LOG_TAG, "setHeaderScroll: " + value);
 		}
+		
+		this.onPulled(value);
 
 		// Clamp value to with pull scroll range
 		final int maximumPullScroll = getMaximumPullScroll();
